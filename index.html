@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BMR & TDEE Calculator</title>
+    <link rel="stylesheet" href="bootstrap.min.css">
+    <link href='https://fonts.googleapis.com/css?family=Sarabun' rel='stylesheet'>
+    <link href='https://fonts.googleapis.com/css?family=IBM Plex Sans Condensed' rel='stylesheet'>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #f4c519;">
+        <a class="navbar-brand" href="#" style="color: #fff;">
+            BMR & TDEE Calculator <img
+                src="https://i.pinimg.com/originals/45/08/73/450873b27b506c5e1abd2f45d46f2ea3.gif" width="30"
+                height="30" alt="Cute GIF"></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="#bmr-calculator" style="color: #fff;">Calculate BMR</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#tdee-calculator" style="color: #fff;">Calculate TDEE</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <div id="bmr-calculator-gif" class="w-100">
+        <main class="container mt-4">
+            <section>
+                <center>
+                    <h2><strong>มาเรียนรู้ไปกับ borntodev</strong></h2>
+                </center>
+                <img class="w-100" src="https://img.kapook.com/u/patcharin/Exercise/ETC/weightandfood.jpg">
+            </section>
+            <hr>
+            <section>
+                <h4>วิธีคำนวณปริมาณแคลอรี่ ที่ต้องการต่อวัน</h4>
+                <p><strong>รู้หรือไม่?</strong> ว่านอกจากจะลดน้ำหนักด้วยการออกกำลังกายแล้ว ก็ยังมีวิธีง่ายๆ
+                    ที่ช่วยให้ลดน้ำหนักได้ดี
+                    อีกหนึ่งวิธีคือ <strong>การควบคุมปริมาณแคลอรี่ต่อวันของอาหารที่เรากินเข้าไปนั่นเอง</strong>
+                    ซึ่งการกินแบบนับแคลอรี่นั้นจะช่วยให้ร่างกายได้รับสารอาหารที่เพียงพอต่อปริมาณที่ร่างกายต้องการในแต่ละวัน
+                </p>
+                <p>หลักการง่ายๆ ของการลดน้ำหนัก คือ <mark class="custom-highlight">เอาเข้าให้น้อยกว่าเอาออก</mark>
+                    หากกินไม่เกินปริมาณแคลอรี่ที่ร่างกายต้องการต่อวัน จะช่วยให้เราลดและควบคุมน้ำหนักได้อย่างแน่นอน</p>
+                <p>โดยวิธีที่เราจะมาแนะนำกันในวันนี้คือ วิธี คำนวณปริมาณแคลอรี่ต่อวัน ด้วยสูตร <Strong>Basal Metabolic
+                        Rate
+                        (BMR)</Strong>
+                    หรือการหาค่าพลังงานที่ร่างกายต้องการอย่างน้อยที่สุดในแต่ละวัน
+                    เพื่อให้คุณกินอาหารได้อย่างเหมาะสมมากขึ้นค่ะ</p>
+            </section>
+            <section>
+                <img class="w-100" src="https://img.kapook.com/u/2020/sireeporn/Health-27/A01.jpg">
+            </section>
+            <hr>
+            <section>
+                <h4>มารู้จักกันก่อนว่า BMR คืออะไร</h4>
+                <p>BMR ที่พูดถึงนี้ คือ Basal Metabolic Rate หรือ
+                    <strong>ค่าที่บ่งบอกถึงพลังงานที่ร่างกายต้องการน้อยที่สุดในแต่ละวัน</strong> เพื่อให้ระบบต่างๆ
+                    สามารถทำงานได้
+                    แม้ในตอนที่เราอยู่เฉยๆ หรือไม่ได้ทำกิจกรรมใดๆ
+                </p>
+                <p>นั่นหมายความว่า ค่า BMR ที่เราได้นั้น คือ ปริมาณแคลอรี่ในหนึ่งวันที่ร่างกายเราใช้
+                    แม้ว่าวันนั้นเราจะไม่ทำกิจกรรมใดๆ เลย เมื่อเราได้ค่า BMR ของเรามาแล้ว
+                    จะได้ทราบว่าเราควรกินอาหารในปริมาณเท่าใด เพื่อให้สอดคล้องกับการใช้พลังงานของร่างกายของเรา</p>
+            </section>
+            <section id="bmr-calculator">
+                <h3>คำนวณค่า BMR (Calculate Your BMR)</h3>
+                <form class="calculator-form">
+                    <label for="gender">Gender:</label>
+                    <select id="gender">
+                        <option value="male">Male</option>
+                        <option value="female">Female</option>
+                    </select>
+                    <label for="weight">Weight (kg):</label>
+                    <input type="number" id="weight" />
+                    <label for="height">Height (cm):</label>
+                    <input type="number" id="height" />
+                    <label for="age">Age:</label>
+                    <input type="number" id="age" />
+                    <button id="calculate-bmr" class="btn btn-primary mt-3">Calculate BMR</button>
+                    <div id="result-bmr">
+                        Your BMR: <span id="bmr-result"></span> calories/day
+                    </div>
+                </form>
+            </section>
+            <section><img class="w-100"
+                    src="https://www.thaihealth.or.th/data/content/31050/cms/thaihealth_c_degnoqrsw157.jpg">
+            </section>
+            <hr>
+            <section>
+                <h4>การคำนวณปริมาณแคลอรี่ที่เหมาะสมกับกิจกรรมของเราในแต่ละวัน</h4>
+                <p>อย่างที่เราได้บอกไปแล้วว่า การได้ค่า BMR มานั้นเป็นเพียงจำนวนแคลอรี่ที่ร่างกายใช้โดยไม่มีกิจกรรมใดๆ
+                    แต่เมื่อเราออกกำลังกายหรือทำกิจกรรมอื่นๆ แม้กระทั่งงานบ้าน
+                    กิจกรรมเหล่านี้ส่งผลให้ร่างกายใช้พลังงานมากขึ้น</p>
+                <p>ดังนั้น Fit Me จะพาไปดูกันนะคะว่า สาวๆ มีกิจกรรมในการออกกำลังกายอย่างไรกันบ้าง
+                    เพื่อคำนวณหาแคลอรี่ที่ร่างกายต้องการต่อวันโดยเฉลี่ย โดยใช้ค่า BMR ที่เราหามาได้เป็นตัวตั้งค่ะ</p>
+                <p>เรากำลังพูดถึงค่า TDEE (Total Daily Energy Expenditure) คือ
+                    ปริมาณการใช้พลังงานของร่างกายของแต่ละคนในหนึ่งวัน ซึ่งแต่ละคนจะใช้พลังงานไม่เท่ากัน ขึ้นอยู่กับค่า
+                    BMR
+                    และประเภทของกิจกรรมของแต่ละคนด้วยค่ะ</p>
+                <p>มาลองดูกันนะคะว่า สาวๆ มีกิจกรรมในการออกกำลังกายอย่างไรกันบ้าง
+                    เพื่อคำนวณหาแคลอรี่ที่ร่างกายต้องการต่อวันโดยเฉลี่ย โดยใช้ค่า BMR ที่เราหามาได้เป็นตัวตั้งค่ะ</p>
+                <ul>
+                    <li>นั่งทำงานอยู่กับที่ ไม่ได้ออกกำลังกายเลย = BMR x 1.2</li>
+                    <li>ออกกำลังกายเบาๆ 1-3 วันต่อสัปดาห์ = BMR x 1.375</li>
+                    <li>ออกกำลังกายปานกลาง 3-5 วันต่อสัปดาห์ = BMR x 1.55</li>
+                    <li>ออกกำลังกายหนัก 6-7 วันต่อสัปดาห์ = BMR x 1.7</li>
+                    <li>ออกกำลังกายอย่างหนักเป็นประจำ เพื่อซ้อมในการแข่งขัน = BMR x 1.9</li>
+                </ul>
+                <blockquote>
+                    <p>แนะนำให้ลดปริมาณพลังงานให้น้อยกว่าที่ร่างกายเราใช้วันละประมาณ 500 แคลอรี่ แต่เมื่อลบออก 500
+                        แคลอรี่แล้ว จะต้องห้ามน้อยกว่าค่า BMR ที่เราคำนวณได้นะคะ</p>
+                    <p>เพราะถ้าเรากินน้อยกว่าค่า BMR จะทำให้ร่างกายได้รับพลังงานน้อยเกินไป
+                        เมื่อร่างกายเรียนรู้ว่าได้รับพลังงานน้อยมาก ก็จะไม่ยอมใช้พลังงานตามปกติ อาจส่งผลให้
+                        <strong>ระบบเผาผลาญของเราพังได้ค่ะ</strong>
+                    </p>
+                </blockquote>
+            </section>
+            <section id="tdee-calculator">
+                <h3>คำนวณปริมาณแคลอรี่ที่เหมาะสมกับกิจกรรมของเราในแต่ละวัน
+                    (Calculate Your TDEE)</h3>
+                <form class="calculator-form">
+                    <label for="activity">Activity Level:</label>
+                    <select id="activity">
+                        <option value="sedentary">อยู่ประจำที่ (ออกกำลังกายน้อยหรือไม่มีเลย)</option>
+                        <option value="light">ใช้งานน้อย (ออกกำลังกายเบา ๆ หรือเล่นกีฬา 1-3 วันต่อสัปดาห์)</option>
+                        <option value="moderate">ใช้งานปานกลาง (ออกกำลังกายหรือเล่นกีฬาปานกลาง 3-5 วันต่อสัปดาห์)
+                        </option>
+                        <option value="active">กระตือรือร้น (ออกกำลังกายหนักหรือเล่นกีฬา 6-7 วันต่อสัปดาห์)</option>
+                        <option value="veryActive">กระตือรือร้นมาก (ออกกำลังกายอย่างหนัก ออกกำลังกาย หรือฝึกซ้อม)
+                        </option>
+                    </select>
+                    <button id="calculate-tdee" class="btn btn-primary mt-3">Calculate TDEE</button>
+                    <div id="result-tdee">
+                        Your TDEE: <span id="tdee-result"></span> calories/day
+                    </div>
+                </form>
+            </section>
+            <section><img class="w-100"
+                    src="https://static.thairath.co.th/media/dFQROr7oWzulq5FZUEKg1Ljg9EgYeMs10V94VzyXSZCwx13ZoMI4JgJVRpjM5mjATp5.webp">
+            </section>
+            <hr>
+            <section>
+                <h4>สรุป</h4>
+                <p>เห็นมั้ยคะว่า แม้สาวๆ จะไม่ได้ออกกำลังกายก็ลดน้ำหนักได้นะคะ ด้วยการควบคุมปริมาณแคลอรี่ที่เรากินเข้าไป
+                    โดยสามารถใช้สูตรนี้คำนวณคร่าวๆ ถึงปริมาณแคลอรี่ที่ร่างกายควรได้รับต่อวัน
+                    หากกินไม่เกินพลังงานที่ร่างกายต้องการตามที่เราคำนวณออกมา รับประกันได้ว่าสาวๆ
+                    ก็สามารถลดน้ำหนักได้อย่างแน่นอนค่ะ</p>
+                <p>แต่การออกกำลังกายควบคู่ไปด้วยจะทำให้เราไปถึงเป้าหมายได้เร็วยิ่งขึ้น และทำให้สัดส่วนกระชับ สุขภาพจิตดี
+                    พร้อมกับอย่าลืมเลือกรับประทานอาหารที่ดีมีประโยชน์เพื่อสุขภาพที่ดีด้วยนะคะ</p>
+                <p>จบแล้ว…ไว้พบกันใหม่บทความหน้านะคะ</p>
+            </section>
+            <hr>
+        </main>
+    </div>
+    <script src="bootstrap.min.js"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>
